@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EichkustMusic.Statatistics.API", "EichkustMusic.States.API\EichkustMusic.Statatistics.API.csproj", "{776EF23A-FB31-4525-8207-036F52632947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EichkustMusic.Statistics.Domain", "EichkustMusic.States.Domain\EichkustMusic.Statistics.Domain.csproj", "{E1037741-3AD2-4A54-A3A7-D181E745C733}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EichkustMusic.Statistics.Application", "EichkustMusic.States.Application\EichkustMusic.Statistics.Application.csproj", "{355BA2B2-BF8A-46D4-9C79-7009A1DFBA30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EichkustMusic.Statistics.Infrastructure", "EichkustMusic.States.Infrastructure\EichkustMusic.Statistics.Infrastructure.csproj", "{D0F25AAF-E878-4883-83DB-8CCB0C742996}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{776EF23A-FB31-4525-8207-036F52632947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{776EF23A-FB31-4525-8207-036F52632947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{776EF23A-FB31-4525-8207-036F52632947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{776EF23A-FB31-4525-8207-036F52632947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1037741-3AD2-4A54-A3A7-D181E745C733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1037741-3AD2-4A54-A3A7-D181E745C733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1037741-3AD2-4A54-A3A7-D181E745C733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1037741-3AD2-4A54-A3A7-D181E745C733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355BA2B2-BF8A-46D4-9C79-7009A1DFBA30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355BA2B2-BF8A-46D4-9C79-7009A1DFBA30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355BA2B2-BF8A-46D4-9C79-7009A1DFBA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355BA2B2-BF8A-46D4-9C79-7009A1DFBA30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F25AAF-E878-4883-83DB-8CCB0C742996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F25AAF-E878-4883-83DB-8CCB0C742996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F25AAF-E878-4883-83DB-8CCB0C742996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F25AAF-E878-4883-83DB-8CCB0C742996}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {964F9E65-2AEC-4323-9759-0121015F200D}
+	EndGlobalSection
+EndGlobal
