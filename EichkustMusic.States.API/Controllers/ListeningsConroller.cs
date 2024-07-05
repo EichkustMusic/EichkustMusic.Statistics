@@ -2,18 +2,19 @@
 using EichkustMusic.States.Application.UnitOfWork;
 using EichkustMusic.States.Domain.Entities;
 using EichkustMusic.Statistics.Application.DTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EichkustMusic.Statistics.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LikesController : ControllerBase
+    public class ListeningsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public LikesController(
+        public ListeningsController(
             IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper
@@ -27,51 +28,51 @@ namespace EichkustMusic.Statistics.API.Controllers
         public async Task<ActionResult<SimpleStatisticsEntityDto>> GetFromStatistics(
             int id)
         {
-            var like = await _unitOfWork.LikeRepository
+            var listening = await _unitOfWork.ListeningRepository
                 .GetFromStatisticsById(id);
 
-            if (like is null)
+            if (listening is null)
             {
                 return NotFound(nameof(id));
             }
 
-            var likeDto = _mapper.Map<SimpleStatisticsEntityDto>(like);
+            var listeningDto = _mapper.Map<SimpleStatisticsEntityDto>(listening);
 
-            return Ok(likeDto);
+            return Ok(listeningDto);
         }
 
         [HttpPost]
         public async Task<ActionResult<SimpleStatisticsEntityDto>> AddToStatistic(
-            SimpleStatisticsEntityForCreateDto likeForCreateDto)
+            SimpleStatisticsEntityForCreateDto listeningForCreateDto)
         {
-            var like = _mapper.Map<Like>(likeForCreateDto);
+            var listening = _mapper.Map<Listening>(listeningForCreateDto);
 
-            _unitOfWork.LikeRepository.AddToStatistics(like);
+            _unitOfWork.ListeningRepository.AddToStatistics(listening);
 
             await _unitOfWork.SaveChangesAsync();
 
-            var createdLikeDto = _mapper.Map<SimpleStatisticsEntityDto>(like);
+            var createdListeningDto = _mapper.Map<SimpleStatisticsEntityDto>(listening);
 
             return CreatedAtAction(nameof(GetFromStatistics), new
             {
-                like.Id,
+                listening.Id,
             },
-            createdLikeDto);
+            createdListeningDto);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> RemoveFromStatistics(int id)
         {
-            var like = await _unitOfWork.LikeRepository
+            var listening = await _unitOfWork.ListeningRepository
                 .GetFromStatisticsById(id);
 
-            if (like is null)
+            if (listening is null)
             {
                 return NotFound(nameof(id));
             }
 
-            _unitOfWork.LikeRepository
-                .RemoveFromStatistics(like);
+            _unitOfWork.ListeningRepository
+                .RemoveFromStatistics(listening);
 
             await _unitOfWork.SaveChangesAsync();
 
@@ -82,7 +83,7 @@ namespace EichkustMusic.Statistics.API.Controllers
         public async Task<ActionResult<IEnumerable<StatisticsByDateItem>>> GetStatisticsForYearByMonthForTrack(
             int year, int trackId)
         {
-            var statistics = await _unitOfWork.LikeRepository
+            var statistics = await _unitOfWork.ListeningRepository
                 .GetStatisticsByMonthsForYearAsync(year, trackId);
 
             return Ok(statistics);
@@ -92,7 +93,7 @@ namespace EichkustMusic.Statistics.API.Controllers
         public async Task<ActionResult<IEnumerable<StatisticsByDateItem>>> GetStatisticsForMonthByDaysForTrack(
             int year, int month, int trackId)
         {
-            var statistics = await _unitOfWork.LikeRepository
+            var statistics = await _unitOfWork.ListeningRepository
                 .GetStatisticsByDaysForMonthAsync(year, month, trackId);
 
             return Ok(statistics);
