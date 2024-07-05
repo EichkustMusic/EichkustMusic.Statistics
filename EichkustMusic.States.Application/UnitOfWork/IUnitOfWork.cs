@@ -16,7 +16,7 @@ namespace EichkustMusic.States.Application.UnitOfWork
 
         ISimpleStatisticsEntityRepository<Sharing> SharingRepository { get; }
 
-        ISimpleStatisticsEntityRepository<Comment> CommentRepository { get; }
+        ICommentRepository CommentRepository { get; }
 
         Task SaveChangesAsync();
     }
