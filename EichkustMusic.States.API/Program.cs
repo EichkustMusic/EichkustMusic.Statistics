@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddAutoMapper(typeof(EichkustMusic.Statistics.Infrastructure.MappingProfiles.LikeProfile));
 
 var app = builder.Build();
 
