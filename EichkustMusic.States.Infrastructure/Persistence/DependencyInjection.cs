@@ -16,7 +16,12 @@ namespace EichkustMusic.Statistics.Infrastructure.Persistence
             this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<StatisticsDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("StatisticsDb")));
+                {
+                    options.UseNpgsql(configuration.GetConnectionString("StatisticsDb"));
+
+                });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             return services;
         }

@@ -29,13 +29,19 @@ namespace EichkustMusic.Statistics.Infrastructure.Persistence.UnitOfWork.Reposit
             _dbSet.Add(entity);
         }
 
-        public async Task<List<StatisticsByDateItem>> GetStatisticsByDaysForMonthAsync(int year, int month, int userId)
+        public async Task<T?> GetFromStatisticsById(int id)
+        {
+            return await _dbSet.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<List<StatisticsByDateItem>> GetStatisticsByDaysForMonthAsync(
+            int year, int month, int trackId)
         {
             var actionsByMonth = _dbSet
                 .Where(l =>
                     l.DateTime.Year == year
                     && l.DateTime.Month == month
-                    && l.UserId == userId)
+                    && l.TrackId == trackId)
                 .Select(l => l.DateTime);
 
             var actionsGroupedByDay = actionsByMonth.GroupBy(ad => ad.Day);
@@ -53,12 +59,13 @@ namespace EichkustMusic.Statistics.Infrastructure.Persistence.UnitOfWork.Reposit
             return statistics;
         }
 
-        public async Task<List<StatisticsByDateItem>> GetStatisticsByMonthsForYearAsync(int year, int userId)
+        public async Task<List<StatisticsByDateItem>> GetStatisticsByMonthsForYearAsync(
+            int year, int trackId)
         {
             var actionsForYear = _dbSet
                 .Where(l =>
                     l.DateTime.Year == year
-                    && l.UserId == userId)
+                    && l.TrackId == trackId)
                 .Select(l => l.DateTime);
 
             var actionsGroupedByMonth = actionsForYear.GroupBy(ld => ld.Month);
