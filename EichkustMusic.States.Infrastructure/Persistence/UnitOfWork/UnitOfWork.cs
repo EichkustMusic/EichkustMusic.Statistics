@@ -25,7 +25,7 @@ namespace EichkustMusic.Statistics.Infrastructure.Persistence.UnitOfWork
 
             SharingRepository = new SimpleStatisticsEntityRepository<Sharing>(_statisticsDbContext);
 
-            CommentRepository = new SimpleStatisticsEntityRepository<Comment>(_statisticsDbContext);
+            CommentRepository = new CommentRepository(_statisticsDbContext);
         }
 
         public ISimpleStatisticsEntityRepository<Like> LikeRepository { get; }
@@ -34,7 +34,7 @@ namespace EichkustMusic.Statistics.Infrastructure.Persistence.UnitOfWork
 
         public ISimpleStatisticsEntityRepository<Sharing> SharingRepository {  get; }
 
-        public ISimpleStatisticsEntityRepository<Comment> CommentRepository { get; }
+        public ICommentRepository CommentRepository { get; }
 
         public async Task SaveChangesAsync()
         {
