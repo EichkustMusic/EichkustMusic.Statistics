@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EichkustMusic.Statistics.API.Controllers
 {
+    #region ApiV1
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class SharingsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -99,4 +101,5 @@ namespace EichkustMusic.Statistics.API.Controllers
             return Ok(statistics);
         }
     }
+    #endregion
 }
