@@ -1,4 +1,5 @@
 using EichkustMusic.Statistics.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Mvc;
 using static EichkustMusic.Statistics.Infrastructure.Persistence.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(EichkustMusic.Statistics.Infrastructure.MappingProfiles.LikeProfile));
+
+builder.Services.AddApiVersioning(o => 
+    o.DefaultApiVersion = new ApiVersion(1, 0));
 
 var app = builder.Build();
 
